@@ -74,7 +74,7 @@ export default {
 
   ensureLinuxDockerIsRunning () {
     try {
-      child_process.execSync('ps ax | grep "docker daemon" | grep -v grep');
+      child_process.execSync('ps ax | grep -e "docker \(daemon\|-d\)" | grep -v grep');
     } catch (error) {
       throw new Error('Cannot connect to the Docker daemon. The daemon is not running.');
     }
